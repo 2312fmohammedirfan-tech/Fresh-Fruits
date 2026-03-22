@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Fruits Online Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="icon">🍎</span>
+                <span class="text">FreshFruits</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" data-view="home">Home</a>
+                <a href="#products" data-view="products">Fruits</a>
+                <div id="auth-links">
+                    <button id="login-btn" class="btn-outline">Login</button>
+                    <button id="signup-btn" class="btn-primary">Sign Up</button>
+                </div>
+                <div id="user-profile" class="hidden">
+                    <span id="user-name"></span>
+                    <button id="orders-btn" class="btn-secondary" onclick="app.showView('profile')">My Orders</button>
+                    <button id="logout-btn" class="btn-icon">Logout</button>
+                    <button id="admin-panel-btn" class="btn-secondary hidden">Admin Panel</button>
+                </div>
+                <button id="cart-toggle" class="cart-btn">
+                    <span class="cart-icon">🛒</span>
+                    <span id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="app-container">
+        <!-- Views will be injected here -->
+        <section id="home-view" class="view">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Premium Organic <span class="highlight">Fresh Fruits</span> Delivered</h1>
+                    <p>Natural, fresh, and hand-picked fruits from local farms straight to your doorstep.</p>
+                    <div class="hero-actions">
+                        <button class="btn-primary btn-lg" onclick="app.showView('products')">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+            <div id="featured-products" class="container reveal">
+                <h2>Featured Selection</h2>
+                <div class="product-grid" id="featured-grid"></div>
+            </div>
+
+            <div id="gallery-section" class="container reveal">
+                <div class="section-header">
+                    <h2>Our Gallery</h2>
+                    <p>Experience the vibrant colors of nature's finest.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item large">
+                        <img src="https://images.unsplash.com/photo-1620127252536-03bdfcf6d533?auto=format&fit=crop&q=80&w=800" alt="Fruit Mosaic">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&q=80&w=400" alt="Apple">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1596003906949-67221c37965c?auto=format&fit=crop&q=80&w=400" alt="Lemon">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&q=80&w=400" alt="Berries">
+                    </div>
+                    <div class="gallery-item large"><img src="file:///C:/Users/acer/.gemini/antigravity/brain/86096cc6-22cd-4c27-881b-155f65699797/premium_mango_gallery_1774155097175.png" alt="Mango"></div>
+                    <div class="gallery-item"><img src="file:///C:/Users/acer/.gemini/antigravity/brain/86096cc6-22cd-4c27-881b-155f65699797/vibrant_berry_mix_1774155112173.png" alt="Berries"></div>
+                    <div class="gallery-item"><img src="file:///C:/Users/acer/.gemini/antigravity/brain/86096cc6-22cd-4c27-881b-155f65699797/tropical_dragon_fruit_1774155127062.png" alt="Dragon Fruit"></div>
+                    <div class="gallery-item"><img src="file:///C:/Users/acer/.gemini/antigravity/brain/86096cc6-22cd-4c27-881b-155f65699797/citrus_refreshment_1774155183310.png" alt="Citrus"></div>
+                    <div class="gallery-item"><img src="file:///C:/Users/acer/.gemini/antigravity/brain/86096cc6-22cd-4c27-881b-155f65699797/luscious_cherries_close_up_1774155204756.png" alt="Cherries"></div>
+                    <div class="gallery-item large"><img src="file:///C:/Users/acer/.gemini/antigravity/brain/86096cc6-22cd-4c27-881b-155f65699797/fresh_papaya_nature_setting_1774155224265.png" alt="Papaya"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials-section" class="home-section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Our Customers Say</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avatar">SJ</div>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"The freshest fruits I've ever ordered online. The packaging was eco-friendly and premium!"</p>
+                        <div class="testimonial-user">— Sarah Johnson</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avatar">MT</div>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"Incredible quality. The Hass Avocados were perfectly ripe. Highly recommend the subscription."</p>
+                        <div class="testimonial-user">— Mark Thompson</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="avatar">ED</div>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"Fast delivery and the fruit taste exactly like they were just picked from the orchard."</p>
+                        <div class="testimonial-user">— Emily Davis</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products-view" class="view hidden">
+            <div class="container">
+                <div class="toolbar">
+                    <h2>Our Catalog</h2>
+                    <div class="filters">
+                        <input type="text" id="product-search" placeholder="Search fruits...">
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="seasonal">Seasonal</option>
+                            <option value="tropical">Tropical</option>
+                            <option value="berries">Berries</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="product-grid" id="main-product-grid"></div>
+            </div>
+        </section>
+
+        <section id="admin-view" class="view hidden">
+            <!-- Admin Dashboard -->
+        </section>
+
+        <section id="profile-view" class="view hidden">
+            <div class="container">
+                <div class="profile-tabs">
+                    <button class="tab-btn active" onclick="app.switchProfileTab('orders')">My Orders</button>
+                    <button class="tab-btn" onclick="app.switchProfileTab('settings')">Profile Settings</button>
+                </div>
+
+                <div id="orders-tab-content" class="tab-content">
+                    <div class="section-header">
+                        <h2>Order History</h2>
+                    </div>
+                    <div id="user-orders-list" class="orders-list">
+                        <!-- Orders will be injected here -->
+                    </div>
+                </div>
+
+                <div id="settings-tab-content" class="tab-content hidden">
+                    <div class="section-header">
+                        <h2>Profile Settings</h2>
+                    </div>
+                    <form id="profile-settings-form" class="admin-section" onsubmit="app.handleProfileUpdate(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" id="prof-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="prof-email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Address</label>
+                            <input type="text" id="prof-address" required placeholder="Street, City, ZIP">
+                        </div>
+                        <div class="form-group">
+                            <label>New Password (Optional)</label>
+                            <input type="password" id="prof-password" placeholder="Leave blank to keep current">
+                        </div>
+                        <button type="submit" class="btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us View -->
+        <section id="about-view" class="view hidden">
+            <div class="page-hero">
+                <div class="hero-content">
+                    <h1>About <span class="highlight">FreshFruits</span></h1>
+                    <p>Bringing nature's finest gifts from local farms to your table since 2024.</p>
+                </div>
+            </div>
+            <div class="container about-content reveal">
+                <div class="about-grid">
+                    <div class="about-card glass-card">
+                        <div class="about-icon">🌱</div>
+                        <h3>Our Mission</h3>
+                        <p>We believe everyone deserves access to fresh, organic, and locally sourced fruits. Our mission is to connect farmers directly with customers, cutting out middlemen and ensuring maximum freshness.</p>
+                    </div>
+                    <div class="about-card glass-card">
+                        <div class="about-icon">🚜</div>
+                        <h3>Farm to Doorstep</h3>
+                        <p>Our fruits are hand-picked at peak ripeness and delivered within 24 hours. We work with over 50 certified organic farms across the region to bring you the best seasonal produce.</p>
+                    </div>
+                    <div class="about-card glass-card">
+                        <div class="about-icon">♻️</div>
+                        <h3>Sustainability</h3>
+                        <p>All our packaging is 100% biodegradable. We actively reduce food waste by partnering with community food banks and dynamically updating our stock to avoid surplus.</p>
+                    </div>
+                    <div class="about-card glass-card">
+                        <div class="about-icon">⭐</div>
+                        <h3>Quality Guarantee</h3>
+                        <p>Not happy with your order? We offer a 100% freshness guarantee. If your fruit isn't perfectly fresh, we'll replace it or give you a full refund — no questions asked.</p>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">50+</span>
+                        <span class="stat-label">Partner Farms</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">10K+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">24h</span>
+                        <span class="stat-label">Delivery Time</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label">Organic</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact View -->
+        <section id="contact-view" class="view hidden">
+            <div class="page-hero">
+                <div class="hero-content">
+                    <h1>Get In <span class="highlight">Touch</span></h1>
+                    <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                </div>
+            </div>
+            <div class="container contact-content reveal">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <div>
+                                <strong>Email</strong>
+                                <p>2312fmohammedirfan@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <strong>Phone</strong>
+                                <p>+91 9787934558</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <strong>Address</strong>
+                                <p>South Ukkadam, Billa Street, Coimbatore</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">⏰</span>
+                            <div>
+                                <strong>Business Hours</strong>
+                                <p>Mon – Sat: 10:00 AM to 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form glass-card" onsubmit="app.handleContactForm(event)">
+                        <h3>Send a Message</h3>
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" id="contact-name" required placeholder="e.g. Raj Kumar">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="contact-email" required placeholder="e.g. raj@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" id="contact-subject" required placeholder="e.g. Order issue, General inquiry">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea id="contact-message" rows="5" required placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary btn-block">Send Message 🚀</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Your Basket</h3>
+            <button id="close-cart" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-content">
+            <!-- Cart items injected here -->
+        </div>
+        <div class="sidebar-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total">₹0.00</span>
+            </div>
+            <button id="checkout-btn" class="btn-primary btn-block">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div id="auth-modal" class="modal hidden">
+            <div class="modal-header">
+                <h3 id="modal-title">Login</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="auth-form">
+                <div class="form-group" id="name-group">
+                    <label for="reg-name">Full Name</label>
+                    <input type="text" id="reg-name" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="auth-email">Email</label>
+                    <input type="email" id="auth-email" required placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="auth-password">Password</label>
+                    <input type="password" id="auth-password" required placeholder="••••••••">
+                </div>
+                <button type="submit" id="auth-submit" class="btn-primary btn-block">Login</button>
+                <p class="toggle-auth">Don't have an account? <a href="#" id="toggle-to-signup">Sign Up</a></p>
+            </form>
+        </div>
+
+        <div id="product-modal-container" class="modal hidden">
+            <div class="modal-header">
+                <h3 id="product-modal-title">Add New Fruit</h3>
+                <button class="close-modal-product">&times;</button>
+            </div>
+            <form id="product-form" onsubmit="app.handleAddProduct(event)">
+                <input type="hidden" id="p-id">
+                <div class="form-group">
+                    <label>Fruit Name</label>
+                    <input type="text" id="p-name" required placeholder="e.g. Avocado">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Price (₹)</label>
+                        <input type="number" id="p-price" required placeholder="150" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Selling Unit</label>
+                        <select id="p-unit">
+                            <option value="kg">Per kg</option>
+                            <option value="piece">Per piece</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Current Stock</label>
+                    <input type="number" id="p-stock" required placeholder="50" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="p-category">
+                        <option value="tropical">Tropical</option>
+                        <option value="seasonal">Seasonal</option>
+                        <option value="berries">Berries</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Fruit Image (Upload)</label>
+                    <input type="file" id="p-image" required accept="image/png, image/jpeg, image/webp">
+                </div>
+                <button type="submit" id="product-submit-btn" class="btn-primary btn-block">Add Fruit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Selection Modal -->
+    <div id="payment-modal-container" class="modal-overlay hidden">
+        <div class="modal payment-modal">
+            <div class="modal-header">
+                <h3>Select Payment Method</h3>
+                <button onclick="app.toggleModal('payment-modal-container', false)">&times;</button>
+            </div>
+            <p style="text-align: center; color: var(--text-gray); margin-bottom: 1rem;">Choose how you want to pay for your order.</p>
+            <div class="payment-options">
+                <button class="payment-btn upi-gpay" onclick="app.processPayment('Google Pay')">
+                    <span>Google Pay </span>
+                </button>
+                <button class="payment-btn upi-phonepe" onclick="app.processPayment('PhonePe')">
+                    <span>PhonePe</span>
+                </button>
+                <button class="payment-btn upi-paytm" onclick="app.processPayment('Paytm')">
+                    <span>Paytm</span>
+                </button>
+                <div class="divider">or</div>
+                <button class="payment-btn cod" onclick="app.processPayment('Cash on Delivery')">
+                    <span>Cash on Delivery (COD)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="icon">🍎</span>
+                    <span class="text">FreshFruits</span>
+                </div>
+                <p>Delivering nature's finest gems to your doorstep since 2024.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#" onclick="app.showView('home')">Home</a>
+                <a href="#" onclick="app.showView('products')">Shop</a>
+                <a href="#" onclick="app.showView('about')">About Us</a>
+                <a href="#" onclick="app.showView('contact')">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>📧 2312fmohammedirfan@gmail.com</p>
+                <p>📞 +91 9787934558</p>
+                <div class="social-icons">
+                    <span>𝕏</span> <span>📸</span> <span>📘</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FreshFruits Online. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification-toast" class="toast hidden"></div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
